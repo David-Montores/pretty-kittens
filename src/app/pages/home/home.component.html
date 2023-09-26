@@ -1,1 +1,6 @@
-<p>home works!</p>
+<div class="cards-list">
+  <ng-container *ngFor="let kitty of kittens">
+    <app-kitty-card [kitty]="kitty">
+    </app-kitty-card>
+  </ng-container>
+</div>
