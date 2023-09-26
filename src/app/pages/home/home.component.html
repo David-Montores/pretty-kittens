@@ -1,4 +1,5 @@
-<div class="cards-list">
+<div class="cards-list" infiniteScroll [infiniteScrollDistance]="0" [infiniteScrollThrottle]="2000"
+(scrolled)="getKittens()">
   <ng-container *ngFor="let kitty of kittens">
     <app-kitty-card [kitty]="kitty">
     </app-kitty-card>

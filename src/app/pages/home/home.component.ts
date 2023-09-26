@@ -7,7 +7,10 @@ import { KittensService } from 'src/app/services/kittens.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  kittens: [] = [];
+  kittens: any = [];
+  page: number = 0;
+  limitPagination: number = 4;
+  limitPetitions: number = 0;
 
   constructor(private kittensService: KittensService) { }
 
@@ -16,15 +19,23 @@ export class HomeComponent implements OnInit {
   }
 
   public getKittens(): void {
-    this.kittensService.getKittens().subscribe({
+    this.updatePagination();
+    this.kittensService.getKittens(this.page).subscribe({
       next: (res) => {
-        this.kittens = res;
+        this.kittens = [...this.kittens, ...res];
         console.log(res);
       },
       error: (error) => {
         console.log(error);
       }
     })
+  }
+
+  private updatePagination(): void {
+    if (this.limitPetitions === this.limitPagination) {
+      this.limitPetitions = 0;
+      this.page++;
+    }
   }
 
 }

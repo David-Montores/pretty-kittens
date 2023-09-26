@@ -14,10 +14,10 @@ export class KittensService {
 
   constructor(private http: HttpClient) { }
 
-  public getKittens(): Observable<any> {
+  public getKittens(page: number): Observable<any> {
     return this.http
       .get(
-        `${this.base_url}/images/search?limit=30&page=0&has_breeds=1&api_key=${this.api_key}`
+        `${this.base_url}/images/search?limit=25&page=${page}&has_breeds=1&api_key=${this.api_key}`
       )
   }
 }
