@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { API_CAT } from '../environments/environment';
 
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
+import { Kitty } from '../interfaces/kitty.interface';
 
 
 @Injectable({
@@ -14,10 +15,10 @@ export class KittensService {
 
   constructor(private http: HttpClient) { }
 
-  public getKittens(page: number): Observable<any> {
+  public getKittens(page: number): Observable<Kitty[]> {
     return this.http
       .get(
         `${this.base_url}/images/search?limit=25&page=${page}&has_breeds=1&api_key=${this.api_key}`
-      )
+      ).pipe(map((res) => res as Kitty[]));
   }
 }

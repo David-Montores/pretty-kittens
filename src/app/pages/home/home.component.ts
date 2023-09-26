@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Kitty } from 'src/app/interfaces/kitty.interface';
+
 import { KittensService } from 'src/app/services/kittens.service';
 
 @Component({
@@ -7,7 +9,7 @@ import { KittensService } from 'src/app/services/kittens.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  kittens: any = [];
+  kittens: Kitty[] = [];
   page: number = 0;
   limitPagination: number = 4;
   limitPetitions: number = 0;
@@ -21,12 +23,11 @@ export class HomeComponent implements OnInit {
   public getKittens(): void {
     this.updatePagination();
     this.kittensService.getKittens(this.page).subscribe({
-      next: (res) => {
+      next: (res: Kitty[]) => {
         this.kittens = [...this.kittens, ...res];
-        console.log(res);
       },
       error: (error) => {
-        console.log(error);
+        console.error(error);
       }
     })
   }
