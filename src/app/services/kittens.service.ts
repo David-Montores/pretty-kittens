@@ -15,10 +15,17 @@ export class KittensService {
 
   constructor(private http: HttpClient) { }
 
-  public getKittens(page: number): Observable<Kitty[]> {
+  getKittens(page: number): Observable<Kitty[]> {
     return this.http
       .get(
         `${this.base_url}/images/search?limit=25&page=${page}&has_breeds=1&api_key=${this.api_key}`
       ).pipe(map((res) => res as Kitty[]));
+  }
+
+  getKitty(id: string): Observable<Kitty> {
+    return this.http
+      .get(
+        `${this.base_url}/images/${id}`
+      ).pipe(map((res) => res as Kitty));
   }
 }

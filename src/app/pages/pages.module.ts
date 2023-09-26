@@ -6,10 +6,12 @@ import { SharedModule } from '../shared/shared.module';
 
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { PageRoutingModule } from './page-routing.module';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
+    DetailsComponent,
   ],
   imports: [
     CommonModule,

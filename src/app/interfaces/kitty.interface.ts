@@ -3,7 +3,7 @@ export interface Kitty {
     id: string;
     height: number;
     width: number;
-    breeds: [Breeds];
+    breeds: Breeds[];
 }
 
 interface Breeds {

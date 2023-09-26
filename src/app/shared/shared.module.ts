@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { KittensService } from '../services/kittens.service';
 import { KittyCardComponent } from './kitty-card/kitty-card.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { NavbarComponent } from './navbar/navbar.component';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     HttpClientModule
   ],
   exports: [

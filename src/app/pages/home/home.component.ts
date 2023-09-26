@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
     this.updatePagination();
     this.kittensService.getKittens(this.page).subscribe({
       next: (res: Kitty[]) => {
+        console.log(res);
         this.kittens = [...this.kittens, ...res];
       },
       error: (error) => {
