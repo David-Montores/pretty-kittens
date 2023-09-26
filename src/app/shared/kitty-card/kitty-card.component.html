@@ -2,6 +2,9 @@
     <div class="kitty-card__box">
         <p *ngIf="kitty.breeds.length > 0" class="kitty-card__box__title">{{kitty.breeds[0].name}}</p>
         <p *ngIf="kitty.breeds.length === 0" class="kitty-card__box__title">Some pretty kitty :3</p>
+        <span class="material-symbols-outlined" title="Favorites" routerLink="/favorites">
+            favorite
+        </span>
     </div>
     <img class="kitty-card__img" [src]="kitty.url" onerror="this.src='../../assets/missed_cat.jpg'" alt="Some pretty kitty :3" />
 </div>
