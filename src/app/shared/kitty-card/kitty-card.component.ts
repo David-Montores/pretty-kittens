@@ -18,8 +18,34 @@ export class KittyCardComponent {
 
   constructor(private router: Router) { }
 
-  checkKittyDetail(id: string): void {
-    this.router.navigate([`home/details/${id}`]);
+  checkKittyDetail(): void {
+    this.router.navigate([`home/details/${this.kitty.id}`]);
+  }
+
+  handleFavorites(): void {
+    if (!this.alreadyInFavorite()) {
+      this.addToFavorite();
+    } else {
+      this.removeFromFavorite();
+    }
+  }
+
+  addToFavorite(): void {
+    const favorites: Kitty[] = JSON.parse(localStorage.getItem('favorites') || '[]');
+    favorites.push(this.kitty);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }
+
+  removeFromFavorite(): void {
+    const favorites: Kitty[] = JSON.parse(localStorage.getItem('favorites') || '[]');
+    const newFavorites = favorites.filter((kitty) => kitty.id !== this.kitty.id);
+
+    localStorage.setItem('favorites', JSON.stringify(newFavorites));
+  }
+
+  alreadyInFavorite(): boolean {
+    const favorites: Kitty[] = JSON.parse(localStorage.getItem('favorites') || '[]');
+    return favorites.some((kitty) => kitty.id === this.kitty.id);
   }
 
 }
