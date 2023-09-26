@@ -1,0 +1,30 @@
+.cards-list {
+  gap: 1rem;
+  display: grid;
+  justify-items: center;
+  position: relative;
+
+  @media (min-width: 320px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @media (min-width: 800px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1100px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: 1500px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+  
+.card-list__title {
+  text-align: center;
+}
