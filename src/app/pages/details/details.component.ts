@@ -31,6 +31,8 @@ export class DetailsComponent implements OnInit {
 
     this.kittensService.getKitty(id).subscribe({
       next: (res: Kitty) => {
+        console.log(res);
+
         this.kitty = res;
       },
       error: (error) => {
