@@ -10,8 +10,8 @@ import { Kitty } from '../interfaces/kitty.interface';
   providedIn: 'root'
 })
 export class KittensService {
-  private base_url: string = API_CAT.base_url;
-  private api_key: string = API_CAT.api_key;
+  base_url: string = API_CAT.base_url;
+  api_key: string = API_CAT.api_key;
 
   constructor(private http: HttpClient) { }
 
