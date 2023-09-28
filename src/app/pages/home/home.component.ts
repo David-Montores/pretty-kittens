@@ -32,6 +32,32 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  handleFavorites(kitty: Kitty): void {
+    if (!this.alreadyInFavorite(kitty)) {
+      this.addToFavorite(kitty);
+    } else {
+      this.removeFromFavorite(kitty);
+    }
+  }
+
+  addToFavorite(kitty: Kitty): void {
+    const favorites: Kitty[] = JSON.parse(localStorage.getItem('favorites') || '[]');
+    favorites.push(kitty);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }
+
+  removeFromFavorite(kitty: Kitty): void {
+    const favorites: Kitty[] = JSON.parse(localStorage.getItem('favorites') || '[]');
+    const newFavorites = favorites.filter((kit) => kit.id !== kitty.id);
+
+    localStorage.setItem('favorites', JSON.stringify(newFavorites));
+  }
+
+  alreadyInFavorite(kitty: Kitty): boolean {
+    const favorites: Kitty[] = JSON.parse(localStorage.getItem('favorites') || '[]');
+    return favorites.some((kit) => kit.id === kitty.id);
+  }
+
   private updatePagination(): void {
     if (this.limitPetitions === this.limitPagination) {
       this.limitPetitions = 0;
