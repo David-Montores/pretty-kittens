@@ -1,13 +1,6 @@
 <div class="cards-list" infiniteScroll [infiniteScrollDistance]="0" [infiniteScrollThrottle]="2000"
 (scrolled)="getKittens()">
   <ng-container *ngFor="let kitty of kittens">
-    <app-kitty-card [kitty]="kitty">
-      <div class="kitty-card__box">
-        <p class="kitty-card__box__title">{{kitty.breeds[0]?.name || 'Some pretty kitty :3'}}</p>
-        <span [ngClass]="{'material-icons': this.alreadyInFavorite(kitty), 'material-symbols-outlined': !this.alreadyInFavorite(kitty)}" title="Favorites" (click)="handleFavorites(kitty)">
-          favorite
-        </span>
-      </div>
-      </app-kitty-card>
+    <app-kitty-card [kitty]="kitty"></app-kitty-card>
   </ng-container>
 </div>

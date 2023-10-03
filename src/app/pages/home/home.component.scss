@@ -28,21 +28,3 @@
 .card-list__title {
   text-align: center;
 }
-
-.kitty-card__box {
-  display: flex;
-  box-sizing: border-box;
-  width: 100%;
-  position: absolute;
-  padding: 30px 20px 20px 20px;
-  height: auto;
-  bottom: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
-  color: #fff;
-
-  &__title {
-    width: 90%;
-    margin: 0;
-    font-size: 17px;
-  }
-}
